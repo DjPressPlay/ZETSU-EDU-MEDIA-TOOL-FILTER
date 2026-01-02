@@ -7,6 +7,7 @@ import CategorySection from './components/CategorySection';
 import AISearch from './components/AISearch';
 import ToolDetailPage from './components/ToolDetailPage';
 import ImageCarousel from './components/ImageCarousel';
+import Testimonials from './components/Testimonials';
 import { TOOLS, CATEGORIES } from './constants';
 import { Tool } from './types';
 
@@ -232,6 +233,9 @@ const HomePage: React.FC<{
             </div>
           </div>
         </section>
+
+        {/* Testimonials Section */}
+        <Testimonials />
       </main>
     </div>
   );
