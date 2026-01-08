@@ -22,7 +22,7 @@ const BottomGallery: React.FC = () => {
             SYSTEM <span className="text-emerald-500 not-italic">GALLERY</span>
           </h2>
           <span className="text-[10px] mono font-bold text-zinc-600 uppercase tracking-[0.3em] ml-auto">
-            IMG_ARRAY_09
+            IMG_ARRAY_07
           </span>
         </div>
       </div>
