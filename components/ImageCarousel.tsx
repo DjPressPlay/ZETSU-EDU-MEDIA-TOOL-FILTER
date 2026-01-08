@@ -43,7 +43,7 @@ const ImageCarousel: React.FC = () => {
   }, [next, isPaused]);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8">
+    <section id="carousel-section" className="max-w-7xl mx-auto px-4 py-8 scroll-mt-24">
       <div 
         className="relative h-[300px] md:h-[450px] w-full overflow-hidden rounded-[2.5rem] border-2 border-zinc-900 shadow-2xl group"
         onMouseEnter={() => setIsPaused(true)}

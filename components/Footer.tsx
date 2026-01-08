@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -20,6 +21,11 @@ const Footer: React.FC = () => {
             </div>
           </div>
           
+          <div className="flex gap-8 mb-8">
+            <Link to="/" className="text-[10px] mono font-black text-zinc-500 hover:text-emerald-400 uppercase tracking-widest transition-colors">Home</Link>
+            <Link to="/about" className="text-[10px] mono font-black text-zinc-500 hover:text-emerald-400 uppercase tracking-widest transition-colors">About System</Link>
+          </div>
+
           <div className="max-w-2xl text-xs text-zinc-500 font-medium leading-relaxed mb-8 space-y-1">
             <p>© 2025 Zetsumetsu Corporation™</p>
             <p>All systems, products, and materials are the property of Zetsumetsu Corporation, Google, 123Apps</p>

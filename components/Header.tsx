@@ -40,10 +40,8 @@ const Header: React.FC = () => {
     <header className="bg-zinc-950/95 backdrop-blur-2xl border-b border-white/5 sticky top-0 z-50">
       {/* RECREATED ZETSU EDU LOGO BADGE BASED ON PROVIDED IMAGE */}
       <div className="absolute top-0 left-0 z-[100] pointer-events-none">
-        <a 
-          href="https://www.skool.com/zetsuedu-7521/about?ref=abd252c4dda14e3d897063114f09cf4b"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link 
+          to="/"
           className="bg-[#f0f9ff] px-5 py-3 rounded-br-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.6)] border-r-2 border-b-2 border-white/30 pointer-events-auto block hover:brightness-105 transition-all"
         >
           <svg 
@@ -100,7 +98,7 @@ const Header: React.FC = () => {
               />
             </g>
           </svg>
-        </a>
+        </Link>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 h-28 flex items-center justify-between">
@@ -109,7 +107,7 @@ const Header: React.FC = () => {
           <div className="w-[220px] hidden lg:block"></div>
 
           <nav className="hidden xl:flex items-center gap-10">
-            {CATEGORIES.slice(0, 5).map(cat => (
+            {CATEGORIES.slice(0, 4).map(cat => (
               <a 
                 key={cat.id} 
                 href={`#${cat.id}`}
@@ -120,6 +118,13 @@ const Header: React.FC = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-1 bg-emerald-500 transition-all group-hover:w-full"></span>
               </a>
             ))}
+            <Link 
+              to="/about"
+              className="text-[11px] font-black text-emerald-500 hover:text-white transition-all mono uppercase tracking-[0.25em] relative group py-2"
+            >
+              ABOUT
+              <span className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all group-hover:w-full"></span>
+            </Link>
           </nav>
         </div>
 
@@ -143,7 +148,7 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="xl:hidden border-t border-zinc-900 bg-zinc-950/98 absolute w-full left-0 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-200 backdrop-blur-3xl">
           <div className="p-12 space-y-10 text-center">
-            {CATEGORIES.map(cat => (
+            {CATEGORIES.slice(0, 4).map(cat => (
               <a 
                 key={cat.id} 
                 href={`#${cat.id}`}
@@ -153,6 +158,13 @@ const Header: React.FC = () => {
                 {cat.title}
               </a>
             ))}
+            <Link 
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-4xl font-black text-emerald-500 hover:text-white italic uppercase tracking-tighter"
+            >
+              ABOUT
+            </Link>
           </div>
         </div>
       )}

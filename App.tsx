@@ -8,6 +8,9 @@ import AISearch from './components/AISearch';
 import ToolDetailPage from './components/ToolDetailPage';
 import ImageCarousel from './components/ImageCarousel';
 import Testimonials from './components/Testimonials';
+import TutorialWalkthrough from './components/TutorialWalkthrough';
+import AboutPage from './components/AboutPage';
+import BottomGallery from './components/BottomGallery';
 import { TOOLS, CATEGORIES } from './constants';
 import { Tool } from './types';
 
@@ -18,7 +21,7 @@ const UsageProgressBar: React.FC<{
   onAction: (xp: number, msg: string) => void 
 }> = ({ xp, level, progress, onAction }) => {
   return (
-    <section className="py-12 bg-zinc-950">
+    <section id="progress-hub" className="py-12 bg-zinc-950 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4">
         <div className="bg-zinc-900/50 rounded-[2.5rem] border border-zinc-800 p-1 md:p-2 overflow-hidden shadow-2xl backdrop-blur-sm">
           <div className="bg-zinc-900 rounded-[2rem] border border-zinc-800 p-8 md:p-12 relative overflow-hidden">
@@ -134,7 +137,7 @@ const HomePage: React.FC<{
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="zetsu-gradient pt-32 pb-12 relative overflow-hidden">
+        <section id="hero-section" className="zetsu-gradient pt-32 pb-12 relative overflow-hidden scroll-mt-24">
           <div className="scanline"></div>
           <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500 via-transparent to-transparent"></div>
           
@@ -165,7 +168,7 @@ const HomePage: React.FC<{
         />
 
         {/* COMMAND INTERFACE */}
-        <section className="py-12 bg-zinc-950 relative z-20">
+        <section id="command-center" className="py-12 bg-zinc-950 relative z-20 scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Box 1: Tool Filter */}
@@ -199,7 +202,7 @@ const HomePage: React.FC<{
         </section>
 
         {/* Tools Sections */}
-        <div className="max-w-7xl mx-auto px-4 py-24 space-y-32">
+        <div id="tool-sections" className="max-w-7xl mx-auto px-4 py-24 space-y-32">
           {CATEGORIES.map(category => {
             const categoryTools = toolsByCategory[category.id] || [];
             if (categoryTools.length === 0) return null;
@@ -228,11 +231,20 @@ const HomePage: React.FC<{
                 ❤️‍🔥ZETSU EDU is your best friend for <span className="text-emerald-400 font-bold italic">school projects and fun media work</span>. 
               </p>
               <p>
-               I have collected all the best tools for video, audio, and documents in one easy place. No more searching the web for hours! Just pick a tool, get your work done, and earn points to level up. It is like a game for being productive!
+               I have collected all the best tools for video, audio, and documents in one easy place. No more searching the web for hours!
               </p>
+              <Link 
+                to="/about"
+                className="inline-block bg-zinc-800 hover:bg-emerald-500 hover:text-zinc-950 text-emerald-400 px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest transition-all mt-6"
+              >
+                Read Full System Report
+              </Link>
             </div>
           </div>
         </section>
+
+        {/* 9 IMAGE CAROUSEL SECTION */}
+        <BottomGallery />
 
         {/* Testimonials Section */}
         <Testimonials />
@@ -262,6 +274,7 @@ const App: React.FC = () => {
     <HashRouter>
       <div className="flex flex-col min-h-screen relative">
         <Header />
+        <TutorialWalkthrough />
         
         {notification && (
           <div className="fixed bottom-10 right-10 z-[2000] bg-emerald-500 text-zinc-950 px-6 py-3 rounded-xl font-black mono text-xs shadow-2xl animate-in slide-in-from-right-10 flex items-center gap-3 border border-emerald-400/50">
@@ -272,6 +285,7 @@ const App: React.FC = () => {
 
         <Routes>
           <Route path="/" element={<HomePage xp={xp} level={level} progress={progress} onAction={addXp} />} />
+          <Route path="/about" element={<AboutPage />} />
           {TOOLS.map(tool => (
             <Route 
               key={tool.id} 
